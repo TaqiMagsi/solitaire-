@@ -9,13 +9,15 @@ export class CardsComponent implements OnInit {
 
   displayCard: boolean = false;
 
+  cardsSet: any;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   showCard() {
-    this.displayCard = true
+    this.displayCard = true;
   }
 
 }

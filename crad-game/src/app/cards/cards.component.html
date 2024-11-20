@@ -3,7 +3,7 @@
         <div class="flex gap-4">
             <img src="assets\svg-cards\cardback.svg" (click)="showCard()">
             <div class="flex items-center border  border-white w-[222px] rounded-md bg-green-700 " [ngClass]="{'border-none bg-[#006400]': displayCard}">
-                <img *ngIf="displayCard" src="assets/svg-cards/king_of_hearts.svg">
+                <img cdkDrag *ngIf="displayCard" src="assets/svg-cards/king_of_hearts.svg">
             </div>
         </div>
         <div class="flex gap-4">
@@ -17,7 +17,7 @@
 
     <div class="flex mt-5 gap-4 mx-8  ">
 
-        <div>
+        <div cdkDrag>
             <img src="assets/svg-cards/king_of_hearts.svg">
         </div>
         <div>
@@ -66,9 +66,9 @@
                 <img class="w-full absolute z-5 top-5 " src="assets/svg-cards/cardback.svg" alt="Card Back">
                 <img class="w-full absolute top-10 z-10" src="assets/svg-cards/cardback.svg" alt="Card Back">
                 <img class="w-full absolute top-14 z-20" src="assets/svg-cards/cardback.svg" alt="Card Back">
-                <img class="w-full absolute top-[70px] z-20" src="assets/svg-cards/cardback.svg" alt="Card Back">
-                <img class="w-full absolute top-[86px] z-40" src="assets/svg-cards/cardback.svg" alt="King of Hearts">
-                <img class="w-full absolute top-[100px] z-50" src="assets/svg-cards/king_of_hearts.svg" alt="King of Hearts">
+                <img class="w-full absolute top-[70px] z-30" src="assets/svg-cards/cardback.svg" alt="Card Back">
+                <img class="w-full absolute top-[86px] z-50" src="assets/svg-cards/cardback.svg" alt="King of Hearts">
+                <img class="w-full absolute top-[100px] z-[60]" src="assets/svg-cards/king_of_hearts.svg" alt="King of Hearts">
             </div>
         </div>
 
