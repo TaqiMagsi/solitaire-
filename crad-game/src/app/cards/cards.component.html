@@ -1,9 +1,9 @@
-<div class="mainwrap w-[90%] m-auto">
+<div cdkDropListGroup class="mainwrap w-[90%] m-auto">
     <div class="flex  mt-4">
         <div class="flex gap-4">
             <img src="assets\svg-cards\cardback.svg" (click)="showCard()">
-            <div class="flex items-center border  border-white w-[222px] rounded-md bg-green-700 " [ngClass]="{'border-none bg-[#006400]': displayCard}">
-                <img cdkDrag *ngIf="displayCard" src="assets/svg-cards/king_of_hearts.svg">
+            <div class="flex items-center border  border-white w-[222px] rounded-md bg-green-700 " #stockList="cdkDropList" cdkDropList [cdkDropListData]="stock" [cdkDropListConnectedTo]="[]" [ngClass]="{'border-none bg-[#006400]': displayCard}">
+                <img cdkDrag *ngIf="displayCard" src="{{ 'assets/svg-cards/' + cardInStock }}">
             </div>
         </div>
         <div class="flex gap-4">
@@ -17,13 +17,16 @@
 
     <div class="flex mt-5 gap-4 mx-8  ">
 
-        <div cdkDrag>
-            <img src="assets/svg-cards/king_of_hearts.svg">
+        <div cdkDropList #pile1List="cdkDropList" [cdkDropListConnectedTo]="[pile2List]" [cdkDropListData]="pile1" (cdkDropListDropped)="drop($event)">
+            <div class="relative w-[222px] h-auto" *ngFor="let items of pile1">
+                <img cdkDrag class="w-full absolute z-10" src="{{'assets/svg-cards/' + items}}">
+            </div>
+
         </div>
-        <div>
-            <div class="relative w-[222px] h-auto">
-                <img class="w-full absolute z-0" src="assets/svg-cards/cardback.svg" alt="Card Back">
-                <img class="w-full absolute top-5 z-10" src="assets/svg-cards/king_of_hearts.svg" alt="King of Hearts">
+        <div cdkDropList #pile2List="cdkDropList" [cdkDropListConnectedTo]="[pile1List]" [cdkDropListData]="pile2" (cdkDropListDropped)="drop($event)">
+            <div *ngFor="let items of pile2,let i=index" class="relative w-[222px] h-auto">
+                <!-- <img class="w-full absolute z-0" src="assets/svg-cards/cardback.svg" alt="Card Back"> -->
+                <img cdkDrag [ngStyle]="{'z-index':i+ 10}" class="w-full absolute top-5 z-10" src="{{'assets/svg-cards/' + items}}">
             </div>
         </div>
         <div>
