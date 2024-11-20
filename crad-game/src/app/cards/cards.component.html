@@ -26,7 +26,7 @@
         <div cdkDropList #pile2List="cdkDropList" [cdkDropListConnectedTo]="[pile1List]" [cdkDropListData]="pile2" (cdkDropListDropped)="drop($event)">
             <div *ngFor="let items of pile2,let i=index" class="relative w-[222px] h-auto">
                 <!-- <img class="w-full absolute z-0" src="assets/svg-cards/cardback.svg" alt="Card Back"> -->
-                <img cdkDrag [ngStyle]="{'z-index':i+ 10}" class="w-full absolute top-5 z-10" src="{{'assets/svg-cards/' + items}}">
+                <img class="w-full absolute top-5 " src="{{'assets/svg-cards/' + items}}"> alt="King of Hearts">
             </div>
         </div>
         <div>

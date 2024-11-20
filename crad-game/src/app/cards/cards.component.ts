@@ -109,7 +109,7 @@ export class CardsComponent implements OnInit {
         event.currentIndex,
       );
     }
-    console.log(this.pile1)
+
     console.log(this.pile2)
   }
 
