@@ -1,15 +1,19 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+
+import { TemplatePortal } from '@angular/cdk/portal';
 
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.scss']
 })
-export class CardsComponent implements OnInit {
+export class CardsComponent implements OnInit, AfterViewInit {
 
   displayCard: boolean = false;
   cardInStock: string = '';
+
+
   stock: string[] = [];
   stockCount: number = 0;
   pile1: string[] = [];
@@ -41,10 +45,14 @@ export class CardsComponent implements OnInit {
     "king_of_clubs.svg", "king_of_diamonds.svg", "king_of_hearts.svg", "king_of_spades.svg"
   ];
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit(): void {
     this.shuffleCards()
+  }
+  ngAfterViewInit() {
+
   }
 
   shuffleCards() {
@@ -90,6 +98,7 @@ export class CardsComponent implements OnInit {
   showCard() {
     this.displayCard = true;
     this.cardInStock = this.stock[this.stockCount];
+
     this.stockCount++;
 
     if (this.stockCount > this.stock.length - 1) {
@@ -98,7 +107,7 @@ export class CardsComponent implements OnInit {
 
   }
   drop(event: CdkDragDrop<string[]>) {
-    debugger
+
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -110,7 +119,11 @@ export class CardsComponent implements OnInit {
       );
     }
 
-    console.log(this.pile2)
+    console.log('stock data')
+    console.log(this.stock)
+    console.log('pile1 data')
+    console.log(this.pile1)
   }
+
 
 }
